@@ -93,6 +93,13 @@ class Play extends Phaser.Scene {
             this.ship02.update();
             this.ship03.update();
         }
+         const movementSpeed = 4;
+        if (keyLEFT.isDown) {
+            this.p1Rocket.x -= movementSpeed;
+        }
+        if (keyRIGHT.isDown) {
+            this.p1Rocket.x += movementSpeed;
+        }
 
         // check collisions
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
