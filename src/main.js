@@ -18,6 +18,12 @@ Create new artwork for all of the in-game assets (rocket, spaceships, explosion)
 Create and implement a new weapon (w/ new behavior and graphics) (20)
 Implement a simultaneous two-player mode (30)
 */
+/*
+POP :https://freesound.org/people/unfa/sounds/245645/
+BGM :https://freesound.org/people/sonically_sound/sounds/624886/
+arrow :https://freesound.org/people/Ali_6868/sounds/384914/
+*/
+
 let config = {
     type: Phaser.CANVAS,
     width: 640,
