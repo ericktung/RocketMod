@@ -1,4 +1,11 @@
 /*
+Name :Erick Tung
+Project name: EVIL CUPIT
+date: 4 /11
+time take : more than 10 hr
+*/
+
+/*
 Implement the speed increase that happens after 30 seconds in the original game (5)
 Randomize each spaceship's movement direction at the start of each play (5)
 Add your own (copyright-free) background music to the Play scene (5)
