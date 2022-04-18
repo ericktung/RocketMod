@@ -9,6 +9,7 @@ class Play extends Phaser.Scene {
         this.load.image('rocket2', './assets/rocket2.png');
         this.load.image('spaceship', './assets/spaceship.png');
         this.load.image('starfield', './assets/starfield.png');
+       
         // load spritesheet
         this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 5});
     }
@@ -18,7 +19,7 @@ class Play extends Phaser.Scene {
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
 
         // green UI background
-        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00FF00).setOrigin(0, 0);
+        
         // white borders
         this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0 ,0);
         this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0 ,0);
@@ -47,7 +48,7 @@ class Play extends Phaser.Scene {
         // animation config
         this.anims.create({
             key: 'explode',
-            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first: 0}),
+            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 5, first: 0}),
             frameRate: 30
         });
 
@@ -59,9 +60,9 @@ class Play extends Phaser.Scene {
         let scoreConfig = {
             fontFamily: 'Cursive',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
-            align: 'right',
+          
+            color: 'White',
+            align: 'left',
             padding: {
                 
                 top: 5,
@@ -71,7 +72,7 @@ class Play extends Phaser.Scene {
         }
       
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2,"P1 :"+ this.p1Score, scoreConfig);
-        this.score2Left = this.add.text(borderUISize*10 + borderPadding, borderUISize + borderPadding*2, "P2 :"+this.p2Score, scoreConfig);
+        this.score2Left = this.add.text(borderUISize*6 + borderPadding, borderUISize + borderPadding*2, "P2 :"+this.p2Score, scoreConfig);
         
         
         this.TimeLeft = this.add.text(borderUISize*15 + borderPadding, borderUISize + borderPadding*2, this.timer, scoreConfig);
@@ -80,11 +81,22 @@ class Play extends Phaser.Scene {
         this.gameOver = false;
         // 60-second play clock
         scoreConfig.fixedWidth = 0;
+        this.clock = this.time.delayedCall(30000, () => {
+           this.ship01.speedup();
+           this.ship02.speedup();
+           this.ship03.speedup();
+        }, null, this);
         this.clock = this.time.delayedCall(game.settings.gameTimer, () => {
+            if(this.p1Score>this.p2Score){
+                this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'P1 Wins Score:'+this.p1Score, scoreConfig).setOrigin(0.5);
+            }else{
+                this.add.text(game.config.width/2, game.config.height/2- borderUISize - borderPadding, 'P2 Wins Score:'+this.p2Score, scoreConfig).setOrigin(0.5);
+            }
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← to Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
+       
         
     }
 
