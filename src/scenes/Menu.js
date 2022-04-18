@@ -8,6 +8,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx_select', './assets/blip_select12.wav');
         this.load.audio('sfx_explosion', './assets/explosion38.wav');
         this.load.audio('sfx_rocket', './assets/rocket_shot.wav');
+        this.load.audio('BGM', './assets/BGM.wav');
         this.load.image('background', './assets/background.png');
     }
 
@@ -25,7 +26,7 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
-        
+        this.sound.play('BGM');
         // show menu text
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'background').setOrigin(0, 0);
         this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'LOVE CUIBIT', menuConfig).setOrigin(0.5);
