@@ -33,7 +33,7 @@ class Menu extends Phaser.Scene {
         this.add.text(game.config.width/2, game.config.height/2, 'For P1 Use ←→ arrows to move & (L) to fire', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'For P2 Use (A)(D) to move & (G) to fire', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, game.config.height/2 + borderUISize*2 + borderPadding*2, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
-
+        this.add.text(game.config.width - 128, game.config.height - 30, 'Andy was here', menuConfig);
         
         menuConfig.color = '#000';
         

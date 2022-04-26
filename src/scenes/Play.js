@@ -113,6 +113,7 @@ class Play extends Phaser.Scene {
             }
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← to Menu', scoreConfig).setOrigin(0.5);
+            this.add.text(game.config.width - 128, game.config.height-60, 'Andy was here', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
        
@@ -241,6 +242,6 @@ class Play extends Phaser.Scene {
        
         
         this.sound.play('sfx_explosion');
-      }
+    }
     
-}
+} 
