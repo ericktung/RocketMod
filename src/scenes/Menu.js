@@ -29,44 +29,45 @@ class Menu extends Phaser.Scene {
         this.sound.play('BGM');
         // show menu text
         this.starfield = this.add.tileSprite(0, 0, 640, 480, 'background').setOrigin(0, 0);
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'EVIL CUPIT', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2, 'For P1 Use ←→ arrows to move & (L) to fire', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'For P2 Use (A)(D) to move & (G) to fire', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize*2 + borderPadding*2, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width - 128, game.config.height - 30, 'Andy was here', menuConfig);
-        
+        this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'EVIL CUPIT', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2, 'For P1 Use ←→ arrows to move & (L) to fire', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'For P2 Use (A)(D) to move & (G) to fire', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize * 2 + borderPadding * 2, 'Press ← for Novice or → for Expert', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width - 200, game.config.height - 70, 'Andy was here', menuConfig);
+        this.add.text(game.config.width - 200, game.config.height - 40, 'Erick saw it ', menuConfig);
+
         menuConfig.color = '#000';
-        
+
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     }
 
     update() {
-     
-    
+
+
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-          // Novice mode
-          game.settings = {
-            spaceshipSpeed: 3,
-            gameTimer: 60000    
-          }
-         
-          this.sound.play('sfx_select');
-          this.scene.start("playScene");    
-       
-   
+            // Novice mode
+            game.settings = {
+                spaceshipSpeed: 3,
+                gameTimer: 60000
+            }
+
+            this.sound.play('sfx_select');
+            this.scene.start("playScene");
+
+
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
-          // Expert mode
-          game.settings = {
-            spaceshipSpeed: 4,
-            gameTimer: 45000    
-         
-          }
-         
-          this.sound.play('sfx_select');
-          this.scene.start("playScene");    
+            // Expert mode
+            game.settings = {
+                spaceshipSpeed: 4,
+                gameTimer: 45000
+
+            }
+
+            this.sound.play('sfx_select');
+            this.scene.start("playScene");
         }
-      }
+    }
 }
